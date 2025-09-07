@@ -6,7 +6,7 @@ import { Lobster } from 'next/font/google';
 // Import các component mockup và theme toggle
 import PhoneMockup from '@/components/common/PhoneMockup';
 import MonitorMockup from '@/components/common/MonitorMockup';
-import { ModeToggle } from '../components/theme/theme-toggle';
+import { ModeToggle } from '@/components/theme/theme-toggle';
 
 // Import hình ảnh
 import burberryLogo from '@/public/images/logo.jpg';

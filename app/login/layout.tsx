@@ -1,7 +1,6 @@
 // src/app/layout.tsx
-import './globals.css';
 import { Lobster } from 'next/font/google';
-import { ThemeProvider } from '../components/theme/providers'; // Import ThemeProvider
+import { ThemeProvider } from '@/components/theme/providers'; // Import ThemeProvider
 
 const lobster = Lobster({
   weight: '400',
