@@ -1,17 +1,51 @@
+import GlassSurface from "@/components/GlassSurface";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+      <header className="w-full relative">
+        <GlassSurface
+          className="w-full h-[80px] flex items-center justify-between px-20"
+          displace={15}
+          width="100%"
+          distortionScale={-150}
+          redOffset={5}
+          greenOffset={15}
+          blueOffset={25}
+          brightness={60}
+          opacity={0.8}
+          mixBlendMode="screen"
+        >
+          <h1 className="text-2xl font-bold tracking-wider ml-4">RIZZ WEB</h1>
+
+          <nav className="ml-auto">
+            <ul className="flex gap-12 text-lg">
+              <li>
+                <a href="#" className="hover:text-gray-300 transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition-colors">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition-colors">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </GlassSurface>
+      </header>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
