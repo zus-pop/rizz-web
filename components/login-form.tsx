@@ -33,7 +33,7 @@ export function RizzLoginForm({
           />
         </div>
         <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-          Continue
+          Continue  
         </Button>
         <div className="relative text-center text-sm">
           <span className="text-muted-foreground relative z-10 px-2">
