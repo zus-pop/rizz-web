@@ -11,13 +11,13 @@ export function GoogleLoginButton({
     <Button
       className={cn(
         "cursor-pointer flex gap-2 items-center px-4 py-2 rounded-lg font-medium text-sm transition-all ease-in duration-200",
-        "bg-input text-text-color border border-border", // Màu nền và chữ cho Light Mode
-        "hover:bg-accent hover:text-accent-foreground", // Màu hover cho Light Mode
-        "dark:bg-card dark:text-card-foreground dark:border-border", // Màu nền và chữ cho Dark Mode
-        "dark:hover:bg-accent dark:hover:text-accent-foreground", // Màu hover cho Dark Mode
+        "bg-input text-gray-900 border border-border", // Đổi text-gray-900 cho nền trắng
+        "hover:bg-accent hover:text-accent-foreground",
+        "dark:bg-card dark:text-card-foreground dark:border-border",
+        "dark:hover:bg-accent dark:hover:text-accent-foreground",
         className
       )}
-      variant="outline" // Sử dụng variant outline của Shadcn UI
+      variant="outline"
       {...props}
     >
       <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="w-6">

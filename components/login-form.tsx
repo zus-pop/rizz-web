@@ -1,58 +1,101 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { GoogleLoginButton } from "./GoogleLoginButton"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox"; // Giả sử bạn có component Checkbox
+import { GoogleLoginButton } from "./GoogleLoginButton";
+import DatingProfileScroller from "./DatingProfileScroller";
+
+// Import component ImageSlideshow nếu bạn muốn dùng nhiều ảnh chạy
+// import { ImageSlideshow } from "./ImageSlideshow";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  // Nếu bạn muốn dùng ImageSlideshow, hãy định nghĩa mảng ảnh ở đây
+  // const slideshowImages = [
+  //   '/image1.jpg',
+  //   '/image2.jpg',
+  //   '/image3.jpg',
+  // ];
+
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden p-0">
+    // Đảm bảo div bao ngoài đủ rộng để chứa 2 cột
+    // max-w-4xl hoặc 5xl là hợp lý cho bố cục 2 cột
+    <div
+      className={cn("flex flex-col gap-6 w-full mx-auto", className)}
+      {...props}
+    >
+      <Card className="overflow-hidden p-0 bg-white">
+        {/* Giữ nguyên grid-cols-2 cho bố cục 2 cột */}
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Login to your account</h1>
-                <p className="text-muted-foreground text-balance">
-                  Enter your phone number to login to your account
-                </p>
-              </div>
+          <form className="p-6 md:p-8 flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center text-center mb-8 w-full max-w-xs md:max-w-sm">
+              <h1 className="text-3xl font-bold text-gray-900">Sign in</h1>
+            </div>
+            {/* Sử dụng w-full max-w-xs/sm để giới hạn chiều rộng của form bên trong cột */}
+            <div className="flex flex-col gap-6 w-full max-w-xs md:max-w-sm">
+              {/* Trường nhập liệu số điện thoại */}
               <div className="grid gap-3">
-                <Label htmlFor="phone-number">Phone number</Label>
+                <Label
+                  htmlFor="phone-number"
+                  className="text-xs font-semibold uppercase text-gray-700"
+                >
+                  Phone number
+                </Label>
                 <Input
                   id="phone-number"
                   type="tel"
                   placeholder="Enter phone number"
                   required
+                  className="bg-input text-gray-900 border-border placeholder:text-gray-400 h-12"
                 />
               </div>
-              <Button type="submit" className="w-full bg-black text-white">
-                Continue
-              </Button>
-              <div className="  text-center text-sm  after:inset-0 after:top-1/2 after:z-0 after:flex ">
-                <span className="bg-card text-muted-foreground relative z-10 px-2">
-                  Or continue with
-                </span>
+              <div className="h-px bg-gray-400 my-2 w-full" />
+              <GoogleLoginButton />
+              {/* Checkbox "Stay signed in" */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="stay-signed-in" />
+                <Label htmlFor="stay-signed-in" className="text-sm text-gray-700">
+                  Stay signed in
+                </Label>
               </div>
-             <GoogleLoginButton/>
-              <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign up
+
+              {/* Nút mũi tên và văn bản dưới cùng */}
+              <div className="flex flex-col items-center gap-4 mt-8">
+                <button
+                  type="submit"
+                  className="cursor-pointer relative after:content-['Login'] after:text-white after:absolute after:text-nowrap after:scale-0 hover:after:scale-100 after:duration-200 w-16 h-16 rounded-full border-4 border-rose-200 bg-black flex items-center justify-center duration-300 hover:rounded-[50px] hover:w-36 group/button overflow-hidden active:scale-90"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    className="w-8 h-8 fill-white delay-50 duration-200 group-hover/button:translate-x-30"
+                  >
+                    <path
+                      d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    ></path>
+                  </svg>
+                </button>
+                <span className="text-sm font-semibold uppercase text-gray-500">
+                  {"Can't sign in?"}
+                </span>
+
+                <a
+                  href="#"
+                  className="text-sm font-semibold uppercase underline-offset-4 hover:underline text-gray-900"
+                >
+                  Create account
                 </a>
               </div>
             </div>
           </form>
-          <div className="bg-muted relative hidden md:block">
-            <img
-              src="https://images.unsplash.com/photo-1524604889898-0f803deb1664?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+
+          {/* Cột hình ảnh - Thay bằng DatingProfileScroller */}
+          <div className="bg-muted relative hidden md:flex items-center justify-center p-4">
+            <DatingProfileScroller />
           </div>
         </CardContent>
       </Card>
