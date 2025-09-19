@@ -28,14 +28,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
       >
-        {/* <div className="fixed inset-0 -z-10">
+        <div className="fixed inset-0 -z-10">
           <Iridescence
             color={[0.8157, 0.3373, 0.4157]}
             mouseReact={false}
             amplitude={0.1}
             speed={0.5}
           />
-        </div> */}
+        </div>
         {children}
       </body>
     </html>
